@@ -8,13 +8,13 @@ A user-friendly Windows desktop application for the [OpenManus](https://github.c
 
 ### Option 1: Installer (Recommended)
 
-1. Download `OpenManusGUI_Setup.exe` from the [Releases](https://github.com/yourusername/OpenManusGUI/releases) page
+1. Download `OpenManusGUI_Setup.exe` from the [Releases](https://github.com/pgberg55/OpenManus-GUI/releases) page
 2. Run the installer and follow the on-screen instructions
 3. Launch OpenManus GUI from the Start menu or desktop shortcut
 
 ### Option 2: Portable EXE
 
-1. Download `openmanus_gui.exe` from the [Releases](https://github.com/yourusername/OpenManusGUI/releases) page
+1. Download `openmanus_gui.exe` from the [Releases](https://github.com/pgberg55/OpenManus-GUI/releases) page
 2. Create a folder where you want to run the application
 3. Double-click the EXE to launch
 
@@ -24,11 +24,11 @@ A user-friendly Windows desktop application for the [OpenManus](https://github.c
 2. Clone both repositories side by side:
    ```
    git clone https://github.com/FoundationAgents/OpenManus.git
-   git clone https://github.com/yourusername/OpenManusGUI.git
+   git clone https://github.com/pgberg55/OpenManus-GUI.git
    ```
 3. Run the setup script:
    ```
-   cd OpenManusGUI
+   cd OpenManus-GUI
    setup.cmd
    ```
 4. Launch the GUI:
@@ -99,7 +99,7 @@ If you prefer to build manually:
 ```
 C:\Projects\
  ├─ OpenManus\           ← OpenManus repository (from GitHub)
- └─ OpenManusGUI\        ← This repository
+ └─ OpenManus-GUI\       ← This repository
      ├─ gui.py           ← Main application code
      ├─ requirements.txt ← Dependencies (PySimpleGUI)
      ├─ setup.cmd        ← One-click setup script
@@ -120,7 +120,7 @@ C:\Projects\
 ### Common Issues
 
 1. **"OpenManus directory not found" error**
-   - Make sure the OpenManus repository is cloned as a sibling folder to OpenManusGUI
+   - Make sure the OpenManus repository is cloned as a sibling folder to OpenManus-GUI
    - The folder structure should match the one shown in "Project Structure"
 
 2. **"Failed to install dependencies" during setup**
