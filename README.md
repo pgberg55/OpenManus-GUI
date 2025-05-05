@@ -50,6 +50,19 @@ openmanus-gui/
    pnpm install
    ```
 
+## OpenManus Integration
+
+By default, the application uses a simulated version of OpenManus for demonstration purposes. To use the real OpenManus agent:
+
+1. Install the OpenManus package:
+   ```bash
+   pip install openmanus
+   ```
+
+2. The application will automatically detect and use the real OpenManus agent if it's installed. If not, it will fall back to the simulation.
+
+3. You can verify which version is being used by checking the API server logs when starting the application.
+
 ## Development
 
 To start the development environment:

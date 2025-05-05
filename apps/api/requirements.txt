@@ -4,3 +4,4 @@ websockets>=12.0.0
 python-multipart>=0.0.9
 toml>=0.10.2
 pydantic>=2.6.0
+openmanus>=0.1.0

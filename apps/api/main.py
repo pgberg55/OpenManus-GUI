@@ -15,7 +15,16 @@ import sys
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 
 from apps.api.models import TaskRequest, Task, TaskStatus, ConfigUpdate
+
+# Import both the simulation and real OpenManus
 from apps.api.openmanus import simulate_openmanus_output
+try:
+    from apps.api.real_openmanus import run_openmanus
+    USE_REAL_OPENMANUS = True
+    print("Using real OpenManus agent")
+except ImportError:
+    USE_REAL_OPENMANUS = False
+    print("Using simulated OpenManus agent")
 
 # Path to the config file
 CONFIG_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../config/config.toml"))
@@ -65,7 +74,13 @@ async def run_task(request: TaskRequest, background_tasks: BackgroundTasks):
     
     async def generate_output():
         try:
-            async for line in simulate_openmanus_output(request.prompt):
+            # Use real OpenManus if available, otherwise use simulation
+            if USE_REAL_OPENMANUS:
+                output_generator = run_openmanus(request.prompt)
+            else:
+                output_generator = simulate_openmanus_output(request.prompt)
+                
+            async for line in output_generator:
                 # Update task output
                 task.output.append(line)
                 task.updated_at = datetime.now()
@@ -177,7 +192,13 @@ async def websocket_run_endpoint(websocket: WebSocket):
         
         # Generate and send output
         try:
-            async for line in simulate_openmanus_output(prompt):
+            # Use real OpenManus if available, otherwise use simulation
+            if USE_REAL_OPENMANUS:
+                output_generator = run_openmanus(prompt)
+            else:
+                output_generator = simulate_openmanus_output(prompt)
+                
+            async for line in output_generator:
                 # Update task output
                 task.output.append(line)
                 task.updated_at = datetime.now()
