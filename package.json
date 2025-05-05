@@ -1,0 +1,15 @@
+{
+  "name": "openmanus-gui",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "sh scripts/dev.sh",
+    "test": "pnpm --filter=desktop test:e2e",
+    "build": "pnpm --filter=desktop build",
+    "api": "cd apps/api && python -m uvicorn main:app --host 0.0.0.0 --port 5400 --reload",
+    "desktop": "cd apps/desktop && pnpm dev"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0"
+  }
+}
