@@ -11,7 +11,8 @@ try:
     import openmanus
 except ImportError:
     print("OpenManus package not found. Please install it with 'pip install openmanus'")
-    sys.exit(1)
+    # Don't exit, just raise the ImportError to be caught by the caller
+    raise
 
 async def run_openmanus(prompt: str) -> AsyncGenerator[str, None]:
     """
